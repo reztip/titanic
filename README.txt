@@ -1,3 +1,5 @@
+This follows a tutorial from Kaggle on classifying survival of passengers on the Titanic.
+
 VARIABLE DESCRIPTIONS:
 survival        Survival
                 (0 = No; 1 = Yes)
