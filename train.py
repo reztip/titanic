@@ -109,3 +109,4 @@ for row in test_file_object:
            bin_fare = j
            break
 
+test_file.close()
