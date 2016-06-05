@@ -21,9 +21,32 @@ number_passengers = np.size(data[:, 0])
 number_survived = np.sum(survived)
 
 females_bool = data[:,4] == 'female'
-# Check who is female and alive: what is proportion
-female_and_survived = np.logical_and(survived, females_bool)
-proportion_women_survived = np.sum(female_and_survived) / np.sum(females_bool)
+males_bool = data[:,4] != 'female'
 
+# Check who is female/male and alive: what is proportion
+female_and_survived = np.logical_and(survived, females_bool)
+male_and_survived = np.logical_and(survived, males_bool)
+# How many survived
+proportion_women_survived = np.sum(female_and_survived) / np.sum(females_bool)
+proportion_men_survived = np.sum(male_and_survived) / np.sum(males_bool)
+
+test_file = open('test.csv', 'rt')
+test_file_object = csv.reader(test_file)
+header = test_file_object.__next__()
+
+prediction_file = open("gender_based_model.csv", 'wt')
+prediction_file_object = csv.writer(prediction_file)
+
+prediction_file_object.writerow(['PassengerId', 'Survived'])
+# We predict women survive, men do not
+for row in test_file_object:
+    if row[3] == 'female':
+        prediction_file_object.writerow([row[0], '1'])
+    else:
+        prediction_file_object.writerow([row[0], '0'])
+
+# close the files
+test_file.close()
+prediction_file.close()
 
 
