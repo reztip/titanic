@@ -16,11 +16,14 @@ data = np.array(data)
 # line does not work below
 # data[:, 0] = data[:, 0].astype(np.int)
 
-dat = data[:,1] == '1'
+survived = data[:,1] == '1'
 number_passengers = np.size(data[:, 0])
-number_survived = np.size(data[:,1][dat])
-females = data[:,4] == 'female'
-proportion_women_survived = sum(dat[females])/sum(females)
+number_survived = np.sum(survived)
+
+females_bool = data[:,4] == 'female'
+# Check who is female and alive: what is proportion
+female_and_survived = np.logical_and(survived, females_bool)
+proportion_women_survived = np.sum(female_and_survived) / np.sum(females_bool)
 
 
 
