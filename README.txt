@@ -1,4 +1,4 @@
-This follows a tutorial from Kaggle on classifying survival of passengers on the Titanic.
+This follows a tutorial from Kaggle on classifying survival of passengers on the Titanic.  See the IPython notebook for my analysis.
 
 VARIABLE DESCRIPTIONS:
 survival        Survival
